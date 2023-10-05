@@ -25,10 +25,25 @@ class TenantResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('slug')
                     ->disabled()
+                    ->hiddenOn('create')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('domain')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Textarea::make('embed')
+                    ->autosize()
+                    ->readOnly()
+                    ->hiddenOn('create')
+                    ->formatStateUsing(function (?Tenant $record): string {
+                        if (! $record) {
+                            return '';
+                        }
+
+                        $link = route('transactions.start', ['tenant' => $record, 'email' => 'EMAIL', 'mass' => 'MASS', 'distance' => 'DISTANCE', 'orderId' => 'ORDER_ID']);
+                        $image = route('compensate.start', ['tenant' => $record, 'mass' => 'MASS', 'distance' => 'DISTANCE']);
+
+                        return view('transactions.embed', ['link' => $link, 'image' => $image])->render();
+                    }),
             ]);
     }
 
