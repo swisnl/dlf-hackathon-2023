@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Tenant::factory(3)
-            ->hasTransactions(5)
+            ->hasTransactions(15)
             ->create();
     }
 }

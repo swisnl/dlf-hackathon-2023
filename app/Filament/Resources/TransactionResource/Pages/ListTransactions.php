@@ -14,4 +14,11 @@ class ListTransactions extends ListRecords
         return [
         ];
     }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            TransactionResource\Widgets\Co2Chart::class,
+        ];
+    }
 }

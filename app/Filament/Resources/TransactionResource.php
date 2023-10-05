@@ -51,6 +51,9 @@ class TransactionResource extends Resource
                 Tables\Columns\TextColumn::make('cents_charged')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\IconColumn::make('mollie_status')
+                    ->label('Paid')
+                    ->boolean(fn ($record) => $record->paid_at !== null),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
