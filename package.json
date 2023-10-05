@@ -1,4 +1,5 @@
 {
+    "name": "@swisnl/dlf-hackathon-2023",
     "private": true,
     "type": "module",
     "scripts": {
