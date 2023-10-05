@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/transactions/store', [PaymentController::class, 'store'])->name('transactions.store');
+Route::get('/transactions/create', [PaymentController::class, 'create'])->name('transactions.create');
+Route::get('/transactions/success', [PaymentController::class, 'success'])->name('transactions.redirect');
+Route::post('/transactions/webhook', [PaymentController::class, 'webhook'])->name('transactions.webhook');

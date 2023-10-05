@@ -15,13 +15,22 @@ class Transaction extends Model
     protected $fillable = [
         'grams_of_co2',
         'cents_charged',
+        'mollie_id',
+        'status',
+        'order_id',
     ];
 
+    /**
+     * @return BelongsTo<Tenant,self>
+     */
     public function tenant(): belongsTo
     {
         return $this->belongsTo(Tenant::class);
     }
 
+    /**
+     * @return BelongsTo<User,self>
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

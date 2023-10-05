@@ -16,6 +16,9 @@ class Account extends Model
         'email',
     ];
 
+    /**
+     * @return HasMany<Transaction>
+     */
     public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);

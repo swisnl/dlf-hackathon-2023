@@ -32,6 +32,9 @@ class Tenant extends Model
         ];
     }
 
+    /**
+     * @return HasMany<Transaction>
+     */
     public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);
