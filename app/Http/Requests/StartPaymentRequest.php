@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePaymentRequest extends FormRequest
+class StartPaymentRequest extends FormRequest
 {
     /**
      * @return string[]
@@ -12,12 +12,15 @@ class CreatePaymentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'amount' => [
+            'mass' => [
+                'required',
+                'numeric',
+            ],
+            'distance' => [
                 'required',
                 'numeric',
             ],
             'orderId' => [
-                'required',
                 'string',
             ],
         ];
