@@ -11,7 +11,7 @@ class StatsController extends Controller
 {
     public function showTenant(Tenant $tenant): Response
     {
-        $transactions = $tenant->transactions->where('mollie_status', PaymentStatus::STATUS_PAID);
+        $transactions = $tenant->transactions->where('mollie_status', PaymentStatus::STATUS_PAID)->get();
 
         return response(
             view('stats.view', [
@@ -23,7 +23,7 @@ class StatsController extends Controller
 
     public function showAccount(Account $account): Response
     {
-        $transactions = $account->transactions->where('mollie_status', PaymentStatus::STATUS_PAID);
+        $transactions = $account->transactions->where('mollie_status', PaymentStatus::STATUS_PAID)->get();
 
         return response(
             view('stats.view', [
