@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -20,8 +21,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
         ]);
 
-        $this->call([
-            TransactionsSeeder::class,
-        ]);
+        Tenant::factory(3)
+            ->hasTransactions(5)
+            ->create();
     }
 }
