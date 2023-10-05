@@ -24,7 +24,8 @@ class TransactionFactory extends Factory
             'account_id' => Account::factory(),
             'grams_of_co2' => $gramsOfCo2 = $this->faker->numberBetween(0, 15000),
             'cents_charged' => $gramsOfCo2 / 1000,
-            'mollie_status' => PaymentStatus::STATUS_OPEN,
+            'mollie_status' => PaymentStatus::STATUS_PAID,
+            'paid_at' => $this->faker->dateTimeBetween(now()->startOfYear(), now()->endOfYear()),
         ];
     }
 }

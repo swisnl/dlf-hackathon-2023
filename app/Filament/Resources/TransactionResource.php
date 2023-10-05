@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TransactionResource\Pages;
 use App\Models\Transaction;
+use BladeUI\Icons\Components\Icon;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -51,6 +52,9 @@ class TransactionResource extends Resource
                 Tables\Columns\TextColumn::make('cents_charged')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\IconColumn::make('mollie_status')
+                    ->label('Paid')
+                    ->boolean(fn($record)=> $record->paid_at !== null),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
