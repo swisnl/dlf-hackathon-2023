@@ -18,6 +18,7 @@ class Transaction extends Model
         'mollie_id',
         'mollie_status',
         'order_id',
+        'paid_at',
     ];
 
     /**
