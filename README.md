@@ -1,13 +1,22 @@
-# DLF Hackathon 2023
+# co2tree (Compensate Order To Tree)
+
+This project can help companies to reduce their carbon footprint by allowing them to offset their carbon emissions 
+by donating to projects that reduce carbon emissions.
 
 ## Project setup
 
 1. `composer install`
-2. `cp .env.example .env` and fill in database, cms credentials and cms api key
+2. `cp .env.example .env` and fill in database credentials
 3. `php artisan key:generate`
-4. run `php artisan migrate:fresh --seed` or import acc database.
+4. run `php artisan migrate:fresh --seed`
 5. `npm install`
 6. `npm run dev`
+
+## Configuration
+
+In order for the application to work you will need to create a Mollie key. You can do this by creating an account on
+[Mollie](https://www.mollie.com/en/). After creating an account you can create a new API key. You will need to add this
+key to the `.env` file as `MOLLIE_KEY`.
 
 ### Tests
 
