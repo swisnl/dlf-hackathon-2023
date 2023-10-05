@@ -60,6 +60,6 @@ class AdminPanelProvider extends PanelProvider
             ->plugin(BreezyCore::make()
                 ->myProfile(
                     hasAvatars: true)
-                ->avatarUploadComponent(fn() => FileUpload::make('avatar_url')->disk('public')));
+                ->avatarUploadComponent(fn () => FileUpload::make('avatar_url')->disk('public')));
     }
 }

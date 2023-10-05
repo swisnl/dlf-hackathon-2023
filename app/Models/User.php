@@ -25,6 +25,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
         'name',
         'email',
         'password',
+        'avatar_url',
     ];
 
     /**
@@ -47,11 +48,13 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
         'password' => 'hashed',
     ];
 
-    public function canAccessPanel(Panel $panel): bool {
+    public function canAccessPanel(Panel $panel): bool
+    {
         return true;
     }
 
-    public function getFilamentAvatarUrl(): ?string {
-        return $this->avatar_url ? Storage::url($this->avatar_url) : null ;
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->avatar_url ? Storage::url($this->avatar_url) : null;
     }
 }
