@@ -8,6 +8,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 
 class AccountResource extends Resource
@@ -49,7 +50,10 @@ class AccountResource extends Resource
                 //
             ])
             ->actions([
-                //
+                Action::make('view stats')
+                    ->url(fn (Account $record): string => route('stats.account', ['account' => $record->getKey()]))
+                    ->icon('heroicon-o-chart-pie')
+                    ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

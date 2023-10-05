@@ -8,6 +8,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 
 class TenantResource extends Resource
@@ -73,6 +74,10 @@ class TenantResource extends Resource
                 //
             ])
             ->actions([
+                Action::make('view stats')
+                    ->url(fn (Tenant $record): string => route('stats.tenant', ['tenant' => $record->getKey()]))
+                    ->icon('heroicon-o-chart-pie')
+                    ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
