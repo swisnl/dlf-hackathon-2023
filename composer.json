@@ -48,6 +48,9 @@
         ],
         "analyse": [
             "vendor/bin/phpstan analyse --ansi"
+        ],
+        "format": [
+            "vendor/bin/pint"
         ]
     },
     "extra": {
