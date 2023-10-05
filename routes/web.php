@@ -22,7 +22,7 @@ Route::get('/transactions/{tenant}/start/{email}', [PaymentController::class, 's
 Route::get('/transactions/{tenant}/{transaction}/success', [PaymentController::class, 'success'])->name('transactions.redirect');
 Route::post('/transactions/webhook', [PaymentController::class, 'webhook'])->name('transactions.webhook');
 
-Route::get('/stats/account/{account}', [StatsController::class, 'showAccount']);
-Route::get('/stats/tenant/{tenant}', [StatsController::class, 'showTenant']);
-
 Route::get('/compensate/{tenant}', [DonationsController::class, 'makeContribution'])->name('compensate.start');
+
+Route::get('/stats/account/{account}', [StatsController::class, 'showAccount'])->name('stats.account');
+Route::get('/stats/tenant/{tenant}', [StatsController::class, 'showTenant'])->name('stats.tenant');
