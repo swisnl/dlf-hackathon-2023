@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DonationsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ Route::post('/transactions/webhook', [PaymentController::class, 'webhook'])->nam
 
 Route::get('/stats/account/{account}', [StatsController::class, 'showAccount']);
 Route::get('/stats/tenant/{tenant}', [StatsController::class, 'showTenant']);
+
+Route::get('/compensate/{tenant}', [DonationsController::class, 'makeContribution']);
