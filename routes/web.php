@@ -25,4 +25,4 @@ Route::post('/transactions/webhook', [PaymentController::class, 'webhook'])->nam
 Route::get('/stats/account/{account}', [StatsController::class, 'showAccount']);
 Route::get('/stats/tenant/{tenant}', [StatsController::class, 'showTenant']);
 
-Route::get('/compensate/{tenant}', [DonationsController::class, 'makeContribution']);
+Route::get('/compensate/{tenant}', [DonationsController::class, 'makeContribution'])->name('compensate.start');
