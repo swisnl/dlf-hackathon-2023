@@ -1,7 +1,6 @@
 <svg
     xml:space="preserve"
     viewBox="0 0 400 512"
-    style="background-color: #dcfce7;"
     version="1.1"
     id="svg10"
     sodipodi:docname="svg.svg"
