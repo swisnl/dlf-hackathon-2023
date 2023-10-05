@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class StartPaymentRequest extends FormRequest
 {
     /**
-     * @return string[]
+     * @return array<string, mixed>
      */
     public function rules(): array
     {
