@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Services\CO2CalculatorInterface;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Http;
 
 class QuoteCarbonFootprint extends Command
 {

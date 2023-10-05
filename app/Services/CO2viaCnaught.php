@@ -8,8 +8,7 @@ class CO2viaCnaught implements CO2CalculatorInterface
 {
     public function __construct(
         readonly protected string $apiKey
-    )
-    {
+    ) {
     }
 
     public function getCO2InGrams(float $distanceInKm, float $weightInKg): float
