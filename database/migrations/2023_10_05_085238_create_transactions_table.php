@@ -23,6 +23,7 @@ return new class extends Migration
                 ->on('accounts')
                 ->restrictOnDelete();
             $table->integer('grams_of_co2');
+            $table->integer('cents_charged');
             $table->timestamps();
         });
     }

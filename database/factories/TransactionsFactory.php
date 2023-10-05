@@ -21,7 +21,8 @@ class TransactionsFactory extends Factory
         return [
             'tenant_id' => Tenant::factory(),
             'account_id' => Account::factory(),
-            'grams_of_co2' => $this->faker->numberBetween(0, 15000),
+            'grams_of_co2' => $gramsOfCo2 = $this->faker->numberBetween(0, 15000),
+            'cents_charged' => $gramsOfCo2 / 1000,
         ];
     }
 }

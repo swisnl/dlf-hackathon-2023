@@ -14,6 +14,7 @@ class Transactions extends Model
 
     protected $fillable = [
         'grams_of_co2',
+        'cents_charged',
     ];
 
     public function tenant(): belongsTo
