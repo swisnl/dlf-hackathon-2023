@@ -3,8 +3,6 @@
 use App\Http\Controllers\DonationsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StatsController;
-use App\Models\Tenant;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*

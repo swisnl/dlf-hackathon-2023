@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Account;
 use App\Models\Tenant;
 use App\Services\CO2CalculatorInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Mollie\Api\Types\PaymentStatus;
 
 class DonationsController extends Controller
 {
