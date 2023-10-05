@@ -3,40 +3,37 @@
 namespace App\Services;
 
 use App\Models\Transaction;
-use Illuminate\Http\RedirectResponse;
+use Mollie\Api\Resources\Payment;
 use Mollie\Laravel\Facades\Mollie;
 
 class PaymentService
 {
-    public function createPayment(float $amount, string $transactionId): RedirectResponse
+    public function createPayment(Transaction $transaction): Payment
     {
-        $amount = number_format($amount / 100, 2, '.', '');
         $payment = Mollie::api()->payments()->create([
             'amount' => [
                 'currency' => 'EUR',
-                'value' => $amount,
+                'value' => number_format($transaction->cents_charged / 100, 2, '.', ''),
             ],
-            'description' => 'Order #12345',
-            'redirectUrl' => route('transactions.redirect'),
+            'description' => sprintf('Compensatie voor %s', $transaction->order_id),
+            'redirectUrl' => route('transactions.redirect', ['tenant' => $transaction->tenant]),
             'webhookUrl' => route('transactions.webhook'),
             'metadata' => [
-                'transaction_id' => $transactionId,
+                'transaction_id' => $transaction->getKey(),
             ],
         ]);
+        $transaction->update(['mollie_id' => $payment->id]);
 
-        return redirect()->to($payment->getCheckoutUrl(), 303);
+        return $payment;
     }
 
-    public function updatePayment(string $paymentId): void
+    public function updatePayment(string $paymentId): Payment
     {
         $payment = Mollie::api()->payments()->get($paymentId);
         $transaction = Transaction::findOrFail($payment->metadata->transaction_id);
-
-        if (! $transaction->mollie_id) {
-            $transaction->mollie_id = $paymentId;
-        }
-
         $transaction->mollie_status = $payment->status;
         $transaction->save();
+
+        return $payment;
     }
 }
