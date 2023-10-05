@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Transactions;
+use App\Models\Transaction;
 use Illuminate\Database\Seeder;
 
 class TransactionsSeeder extends Seeder
@@ -12,6 +12,6 @@ class TransactionsSeeder extends Seeder
      */
     public function run(): void
     {
-        Transactions::factory()->count(25)->create();
+        Transaction::factory()->count(25)->create();
     }
 }

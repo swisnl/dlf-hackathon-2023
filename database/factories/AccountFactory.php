@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Transactions;
+use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
@@ -26,7 +26,7 @@ class AccountFactory extends Factory
     public function hasTransaction(): static
     {
         return $this->has(
-            Transactions::factory(),
+            Transaction::factory(),
         );
     }
 }
