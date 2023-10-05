@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome');
 
 Route::get('/transactions/{tenant}/start/{email}', [PaymentController::class, 'start'])->name('transactions.start');
-Route::get('/transactions/{tenant}/success', [PaymentController::class, 'success'])->name('transactions.redirect');
+Route::get('/transactions/{tenant}/{transaction}/success', [PaymentController::class, 'success'])->name('transactions.redirect');
 Route::post('/transactions/webhook', [PaymentController::class, 'webhook'])->name('transactions.webhook');
 
 Route::get('/stats/account/{account}', [StatsController::class, 'showAccount']);

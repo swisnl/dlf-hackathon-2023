@@ -16,7 +16,7 @@ class PaymentService
                 'value' => number_format($transaction->cents_charged / 100, 2, '.', ''),
             ],
             'description' => sprintf('Compensatie voor %s', $transaction->order_id),
-            'redirectUrl' => route('transactions.redirect', ['tenant' => $transaction->tenant]),
+            'redirectUrl' => route('transactions.redirect', ['tenant' => $transaction->tenant, 'transaction' => $transaction->getKey()]),
             'webhookUrl' => route('transactions.webhook'),
             'metadata' => [
                 'transaction_id' => $transaction->getKey(),

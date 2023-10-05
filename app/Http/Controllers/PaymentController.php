@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Mollie\Api\Types\PaymentStatus;
+use Mollie\Laravel\Facades\Mollie;
 
 class PaymentController extends Controller
 {
@@ -39,9 +40,16 @@ class PaymentController extends Controller
         return redirect()->to($payment->getCheckoutUrl());
     }
 
-    public function success(Tenant $tenant): View
+    public function success(Tenant $tenant, Transaction $transaction): View
     {
-        return view('transactions.success');
+        $status = Mollie::api()->payments()->get($transaction->mollie_id)->status;
+        switch ($status) {
+            case PaymentStatus::STATUS_PAID:
+                return view('transactions.success');
+            default:
+                return view('transactions.failed');
+
+        }
     }
 
     public function webhook(Request $request, PaymentService $paymentService): void
