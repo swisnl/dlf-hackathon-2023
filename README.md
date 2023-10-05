@@ -8,7 +8,7 @@ by donating to projects that reduce carbon emissions.
 1. `composer install`
 2. `cp .env.example .env` and fill in database credentials
 3. `php artisan key:generate`
-4. run `php artisan migrate:fresh --seed`
+4. `php artisan migrate:fresh --seed`
 5. `npm install`
 6. `npm run dev`
 
