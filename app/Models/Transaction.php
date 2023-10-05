@@ -16,7 +16,7 @@ class Transaction extends Model
         'grams_of_co2',
         'cents_charged',
         'mollie_id',
-        'status',
+        'mollie_status',
         'order_id',
     ];
 
@@ -29,10 +29,10 @@ class Transaction extends Model
     }
 
     /**
-     * @return BelongsTo<User,self>
+     * @return BelongsTo<Account,self>
      */
-    public function user(): BelongsTo
+    public function account(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Account::class);
     }
 }
