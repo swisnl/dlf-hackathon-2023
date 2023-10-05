@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Transactions;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,5 +21,12 @@ class AccountFactory extends Factory
         return [
             'email' => Hash::make($this->faker->unique()->safeEmail()),
         ];
+    }
+
+    public function hasTransaction(): static
+    {
+        return $this->has(
+            Transactions::factory(),
+        );
     }
 }
