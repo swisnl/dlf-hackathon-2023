@@ -26,9 +26,10 @@ class QuoteCarbonFootprint extends Command
      */
     public function handle(CO2CalculatorInterface $calculator): int
     {
-        $co2 = $calculator->getCO2InGrams((float) $this->argument('distance'), 1);
+        $co2 = $calculator->getCO2Footprint((float) $this->argument('distance'), 10);
 
-        $this->info(sprintf('The quote for your ride is %s kg of CO2', $co2));
+        $this->info(sprintf('The quote for your ride is %s grams of CO2', $co2->getCO2InGrams()));
+        $this->info(sprintf('Become CO2 Positive by donating €%.2f', $co2->compensationCost() / 100));
 
         return 0;
     }

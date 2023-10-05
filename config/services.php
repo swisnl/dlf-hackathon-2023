@@ -31,8 +31,4 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'cnaught' => [
-        'api_key' => env('CNAUGHT_API_KEY'),
-    ],
-
 ];
