@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::redirect('/', '/admin');
 
 Route::get('/transactions/{tenant}/start/{email}', [PaymentController::class, 'start'])->name('transactions.start');
 Route::get('/transactions/{tenant}/{transaction}/success', [PaymentController::class, 'success'])->name('transactions.redirect');
