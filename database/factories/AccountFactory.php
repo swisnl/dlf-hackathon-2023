@@ -22,11 +22,4 @@ class AccountFactory extends Factory
             'email' => Hash::make($this->faker->unique()->safeEmail()),
         ];
     }
-
-    public function hasTransaction(): static
-    {
-        return $this->has(
-            Transaction::factory(),
-        );
-    }
 }
