@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Services\CO2CalculatorInterface;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
@@ -24,12 +25,12 @@ class QuoteCarbonFootprint extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(CO2CalculatorInterface $calculator): int
     {
-        $response = Http::withToken(config('services.cnaught.api_key'))
-            ->post('https://api.cnaught.com/v1/quotes/ride', ['distance_km' => (float) $this->argument('distance')])
-            ->json();
+        $co2 = $calculator->getCO2InGrams((float) $this->argument('distance'), 1);
 
-        $this->info(sprintf('The quote for your ride is %s kg of CO2', $response['amount_kg']));
+        $this->info(sprintf('The quote for your ride is %s kg of CO2', $co2));
+
+        return 0;
     }
 }
