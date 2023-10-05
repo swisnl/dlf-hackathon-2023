@@ -28,7 +28,7 @@ class Co2Chart extends ChartWidget
             $co2[$month] += $transaction->grams_of_co2;
         }
 
-        foreach($co2 as $key => $value) {
+        foreach ($co2 as $key => $value) {
             $co2[$key] = round($value / 1000, 2);
         }
 
