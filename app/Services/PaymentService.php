@@ -32,7 +32,7 @@ class PaymentService
         $payment = Mollie::api()->payments()->get($paymentId);
         $transaction = Transaction::findOrFail($payment->metadata->transaction_id);
 
-        if($payment->isPaid() && $transaction->paid_at === null){
+        if ($payment->isPaid() && $transaction->paid_at === null) {
             $transaction->paid_at = now();
         }
 
