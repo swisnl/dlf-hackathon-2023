@@ -24,7 +24,7 @@ class PaymentService
             ],
         ]);
 
-        return redirect($payment->getCheckoutUrl(), 303);
+        return redirect()->to($payment->getCheckoutUrl(), 303);
     }
 
     public function updatePayment(string $paymentId): void
